@@ -2,7 +2,7 @@ package com.example.minitest1.service;
 
 import java.util.Optional;
 
-public interface IGenerateRepository<T> {
+public interface IGenerateService<T> {
     Iterable<T> findAll();
 
     void save(T t);

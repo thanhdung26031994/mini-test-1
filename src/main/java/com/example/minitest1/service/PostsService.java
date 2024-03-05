@@ -1,2 +1,33 @@
-package com.example.minitest1.service;public class PostsRepository {
+package com.example.minitest1.service;
+
+import com.example.minitest1.model.Posts;
+import com.example.minitest1.repository.IPostsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+@Service
+public class PostsService implements IPostsService {
+    @Autowired
+    private IPostsRepository postsRepository;
+
+    @Override
+    public Iterable<Posts> findAll() {
+        return postsRepository.findAll();
+    }
+
+    @Override
+    public void save(Posts posts) {
+        postsRepository.save(posts);
+    }
+
+    @Override
+    public Optional<Posts> findById(Integer id) {
+        return postsRepository.findById(id);
+    }
+
+    @Override
+    public void remove(Integer id) {
+        postsRepository.deleteById(id);
+    }
 }
