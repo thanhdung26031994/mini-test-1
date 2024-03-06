@@ -13,6 +13,27 @@ public class Posts {
     private String content;
     private String description;
     private String img;
+    @ManyToOne
+    @JoinColumn(name = "province_id")
+    private Province province;
+
+    public Posts(Integer id, String code, String title, String content, String description, String img, Province province) {
+        this.id = id;
+        this.code = code;
+        this.title = title;
+        this.content = content;
+        this.description = description;
+        this.img = img;
+        this.province = province;
+    }
+
+    public Province getProvince() {
+        return province;
+    }
+
+    public void setProvince(Province province) {
+        this.province = province;
+    }
 
     public String getImg() {
         return img;

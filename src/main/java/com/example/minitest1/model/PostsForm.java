@@ -9,6 +9,25 @@ public class PostsForm {
     private String content;
     private String description;
     private MultipartFile img;
+    private Province province;
+
+    public PostsForm(Integer id, String code, String title, String content, String description, MultipartFile img, Province province) {
+        this.id = id;
+        this.code = code;
+        this.title = title;
+        this.content = content;
+        this.description = description;
+        this.img = img;
+        this.province = province;
+    }
+
+    public Province getProvince() {
+        return province;
+    }
+
+    public void setProvince(Province province) {
+        this.province = province;
+    }
 
     public PostsForm() {
     }

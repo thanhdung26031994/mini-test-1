@@ -103,7 +103,7 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/post_management");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/post_management?createDatabaseIfNotExist=true");
         dataSource.setUsername("root");
         dataSource.setPassword("Trang1234");
         return dataSource;
@@ -131,11 +131,9 @@ public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAwa
     }
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/image/**")
+        registry.addResourceHandler("/img/**")
                 .addResourceLocations("file:" + upload);
     }
-
-
 
 //    @Override
 //    public void addFormatters(FormatterRegistry registry) {

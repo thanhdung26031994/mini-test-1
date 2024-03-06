@@ -12,7 +12,7 @@
     </a>
 </p>
 <div id="form">
-    <form th:action="@{/posts/create}" th:object="${posts}" method="post" novalidate="novalidate">
+    <form th:action="@{/posts/create}" th:object="${posts}" method="post" novalidate="novalidate" enctype="multipart/form-data">
         <input type="hidden" th:field="*{id}">
         <div>
             <label for="code">Code</label>
@@ -30,9 +30,16 @@
             <label for="description">Description</label>
             <input type="text" id="description" th:field="*{description}"/>
         </div>
+
         <div>
             <label for="img">IMG</label>
             <input type="file" id="img" th:field="*{img}"/>
+        </div>
+        <div>
+            <label for="province">Provinces</label>
+            <select th:field="*{province.id}" id="province">
+                <option th:each="p: ${province}" th:value="${p.id}" th:text="${p.name}"></option>
+            </select>
         </div>
         <input type="submit" value="Save"/>
     </form>

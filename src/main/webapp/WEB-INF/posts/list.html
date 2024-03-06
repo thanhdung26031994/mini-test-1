@@ -10,6 +10,11 @@
         Add new Posts
     </a>
 </p>
+<p>
+    <a th:href="@{/provinces}">
+        Provinces
+    </a>
+</p>
 <div class="notify">
     <div th:if="${message}">
         <span th:text="${message}"></span>
@@ -23,6 +28,7 @@
         <th>Title</th>
         <th>Content</th>
         <th>Description</th>
+        <th>Province</th>
         <th>IMG</th>
         <th>Update</th>
         <th>Delete</th>
@@ -35,7 +41,8 @@
             <td th:text="${p.getTitle()}"></td>
             <td th:text="${p.getContent()}"></td>
             <td th:text="${p.getDescription()}"></td>
-            <td><img th:src="@{'/image/'+${p.getImg()}}" width="150" alt=""></td>
+            <td th:text="${p.getProvince().getName()}"></td>
+            <td><img th:src="@{'/img/'+${p.getImg()}}" width="150" alt=""></td>
             <td>
                 <a th:href="@{/posts/update/{id}(id=${p.getId()})}">Update</a>
             </td>

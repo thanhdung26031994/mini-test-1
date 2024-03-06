@@ -1,7 +1,8 @@
-package com.example.minitest1.service;
+package com.example.minitest1.service.impl;
 
 import com.example.minitest1.model.Posts;
 import com.example.minitest1.repository.IPostsRepository;
+import com.example.minitest1.service.IPostsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

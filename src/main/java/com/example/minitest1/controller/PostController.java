@@ -2,7 +2,9 @@ package com.example.minitest1.controller;
 
 import com.example.minitest1.model.Posts;
 import com.example.minitest1.model.PostsForm;
+import com.example.minitest1.model.Province;
 import com.example.minitest1.service.IPostsService;
+import com.example.minitest1.service.IProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -23,8 +25,12 @@ public class PostController {
     private String upload;
     @Autowired
     private IPostsService postsService;
-
-
+    @Autowired
+    private IProvinceService provinceService;
+    @ModelAttribute("province")
+    public Iterable<Province> listProvince(){
+        return provinceService.findAll();
+    }
     @GetMapping("")
     public ModelAndView listPosts(){
         ModelAndView modelAndView = new ModelAndView("/posts/list");
@@ -48,7 +54,7 @@ public class PostController {
             e.printStackTrace();
         }
         Posts posts = new Posts();
-        if (posts.getId() != 0){
+        if (posts.getId() == null){
             posts.setId(postsForm.getId());
         }
         posts.setCode(postsForm.getCode());
@@ -56,6 +62,7 @@ public class PostController {
         posts.setContent(postsForm.getContent());
         posts.setDescription(postsForm.getDescription());
         posts.setImg(fileName);
+        posts.setProvince(postsForm.getProvince());
         postsService.save(posts);
         return "redirect:/posts";
     }
